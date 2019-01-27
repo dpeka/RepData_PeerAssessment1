@@ -34,6 +34,12 @@ plot(x = activity_by_interval$interval, y = activity_by_interval$steps_mean,
      sub = "Day divided into 5 minute intervals",
      xlab = "Time of Day", ylab = "Average Number of Steps")
 
+# Which 5 minute interval, on average, contains the highest average?
+max_mean_interval <- activity_by_interval[
+      which.max(activity_by_interval$steps_mean), ]$interval
+print(paste("The interval that averages the most steps each day is", 
+            max_mean_interval))
+
 # Question 2 - Identifying missing values, creating a strategy for imputation
 # recalculate mean and median using imputed values
 # Empty values
@@ -101,7 +107,7 @@ library(ggplot2)
 
 ggplot(imp_act_by_interval, aes(x=interval, y=steps_mean, col=day_type)) +
       geom_line() +
-      facet_wrap(.~ day_type) +
+      facet_wrap(.~ day_type, ncol = 1) +
       labs(title = "Average number of steps taken throughout the day", 
            subtitle = "Measured in 5 minute intervals", 
            x = "Time of day", y = "Number of steps") +

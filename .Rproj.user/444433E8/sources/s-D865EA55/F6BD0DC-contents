@@ -126,3 +126,4 @@ with(subset(imp_act_by_interval, day_type == "weekend"),
           xlab = "Time of Day", ylab = "Average Number of Steps"))
 
 
+library(knitr)
